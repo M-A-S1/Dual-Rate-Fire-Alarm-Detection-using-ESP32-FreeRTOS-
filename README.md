@@ -172,12 +172,47 @@ This enables **real-time remote monitoring** using any web browser.
 
 ## 📷 Results Summary
 
-| Input Frequency | Detection Result |
-|----------------|------------------|
-| No alarm sound | ❌ No detection |
-| ~3094 Hz | ✅ Short window |
-| ~3106 Hz | ✅ Short window |
-| 3100 Hz | ✅✅ Both windows |
+The system was tested under multiple frequency conditions to evaluate detection accuracy and responsiveness.  
+The figures below show screenshots of the **web dashboard** under different input frequencies.
+
+### 🔹 No Fire Alarm Detected
+When the input sound does not match the fire alarm frequency band, no detection is triggered.
+
+![No Alarm Detected](1.png)
+
+---
+
+### 🔹 Fire Alarm Detected by Short Window (≈3094 Hz)
+The short FFT window detects the alarm quickly despite frequency deviation, providing fast response.
+
+![Short Window Detection at 3094 Hz](2.png)
+
+---
+
+### 🔹 Fire Alarm Detected by Short Window (≈3106 Hz)
+Even with frequency drift above 3100 Hz, the short window successfully flags the alarm.
+
+![Short Window Detection at 3106 Hz](3.png)
+
+---
+
+### 🔹 Fire Alarm Detected by Both Windows (3100 Hz)
+Both short and long FFT windows detect the alarm, resulting in the highest confidence detection.
+
+![Both Windows Detection at 3100 Hz](4.png)
+
+---
+
+### 📊 Detection Summary Table
+
+| Input Frequency | Short Window | Long Window | Overall Detection |
+|----------------|-------------|-------------|------------------|
+| No alarm sound | ❌ | ❌ | ❌ |
+| ~3094 Hz | ✅ | ❌ | ✅ |
+| ~3106 Hz | ✅ | ❌ | ✅ |
+| 3100 Hz | ✅ | ✅ | ✅✅ |
+
+The results demonstrate that the **dual-window FFT strategy** successfully balances fast response and high precision, ensuring reliable fire alarm detection under real-world frequency variations.
 
 ---
 
@@ -188,16 +223,6 @@ This repository includes a complete IEEE-format project report covering:
 - FreeRTOS task design
 - DSP pipeline
 - Experimental evaluation
-
----
-
-## 👨‍💻 Authors
-
-- Muhammad Ali (498148)  
-- Waqas Jahangir (494191)  
-- Muhammad Umar (577600)  
-
-**Supervisor:** Dr. Usman Zabit  
 
 ---
 
